@@ -1,10 +1,22 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import SignupContainer from "../container/SignupContainer";
+import MainTitle from "../components/common/MainTitle";
+import {
+  Button,
+  Form,
+  Input,
+  Inputs,
+  LinkButton,
+} from "../components/common/Common";
 
 export default function Signup() {
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userPw, setUserPw] = useState("");
-  const handleSignup = async () => {
+  const navigate = useNavigate();
+  const handleSignup = async (e) => {
+    e.preventDefault();
     try {
       const response = await fetch("http://localhost:3001/api/register", {
         method: "POST",
@@ -17,10 +29,18 @@ export default function Signup() {
           password: userPw,
         }),
       });
-      const data = await response.json();
-      console.log(data);
+      if (response.status === 200) {
+        // 회원가입 성공
+        alert("회원가입 성공");
+        navigate("/");
+      } else {
+        const data = await response.json();
+        console.log(data);
+        alert("회원가입 실패");
+      }
     } catch (error) {
       console.error(error);
+      alert("올바른 정보를 입력해주세요.");
     }
   };
 
@@ -34,35 +54,40 @@ export default function Signup() {
     setUserPw(e.target.value);
   };
   return (
-    <div>
-      <h1>Signup</h1>
-      <form onSubmit={handleSignup}>
-        <input
-          type="text"
-          name="name"
-          id="userName"
-          placeholder="이름"
-          value={userName}
-          onChange={onChangeName}
-        />
-        <input
-          type="email"
-          name="email"
-          id="userEmail"
-          placeholder="아이디"
-          value={userEmail}
-          onChange={onChangeEmail}
-        />
-        <input
-          type="password"
-          name="password"
-          id="userPassword"
-          placeholder="비밀번호"
-          value={userPw}
-          onChange={onChangePw}
-        />
-        <button type="submit">회원가입</button>
-      </form>
-    </div>
+    <SignupContainer>
+      <MainTitle>회원가입</MainTitle>
+      <Form onSubmit={handleSignup}>
+        <Inputs>
+          <Input
+            type="text"
+            id="userName"
+            name="name"
+            placeholder="이름을 입력하세요."
+            value={userName}
+            onChange={onChangeName}
+          />
+          <Input
+            type="email"
+            id="userEmail"
+            name="email"
+            placeholder="E-mail을 입력하세요."
+            value={userEmail}
+            onChange={onChangeEmail}
+          />
+          <Input
+            type="password"
+            id="userPassword"
+            name="password"
+            placeholder="비밀번호를 입력하세요."
+            value={userPw}
+            onChange={onChangePw}
+          />
+        </Inputs>
+        <Button color="blue" type="submit">
+          회원가입
+        </Button>
+        <LinkButton to="/">로그인</LinkButton>
+      </Form>
+    </SignupContainer>
   );
 }
