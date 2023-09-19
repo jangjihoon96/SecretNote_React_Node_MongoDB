@@ -2,8 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export function Form({ children }) {
-  return <StyledForm>{children}</StyledForm>;
+export function Form({ onSubmit, children }) {
+  return <StyledForm onSubmit={onSubmit}>{children}</StyledForm>;
 }
 const StyledForm = styled.form`
   max-width: 25.875rem;
@@ -32,7 +32,7 @@ export function Input({
       name={name}
       id={id}
       placeholder={placeholder}
-      value={value}
+      defaultValue={value}
       onChange={onChange}
     />
   );
@@ -53,11 +53,11 @@ const StyledInput = styled.input`
   }
 `;
 
-export function Button({ color, children }) {
+export function Button({ type = "button", color, children }) {
   if (color === "blue") {
-    return <StyledButtonBlue>{children}</StyledButtonBlue>;
+    return <StyledButtonBlue type={type}>{children}</StyledButtonBlue>;
   }
-  return <StyledButton>{children}</StyledButton>;
+  return <StyledButton type={type}>{children}</StyledButton>;
 }
 const StyledButton = styled.button`
   width: 100%;
