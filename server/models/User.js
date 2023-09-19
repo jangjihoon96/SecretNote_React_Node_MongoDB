@@ -1,6 +1,7 @@
-const mongoose = require("mongoose"); // mongoose 불러오기
+const mongoose = require("mongoose");
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs"); // bcryptjs 모듈로 변경
 
-// Schema 생성
 const UserSchema = new mongoose.Schema({
   name: {
     type: String,
@@ -15,7 +16,23 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  token: {
+    type: String,
+  },
 });
 
-// model을 export 해주기
-module.exports = User = mongoose.model("user", UserSchema);
+UserSchema.methods.comparePassword = function (plainPassword, cb) {
+  bcrypt.compare(plainPassword, this.password, function (err, isMatch) {
+    if (err) return cb(err);
+    cb(null, isMatch);
+  });
+};
+
+UserSchema.methods.generateToken = function () {
+  const user = this;
+  const token = jwt.sign(user._id.toHexString(), "secretToken");
+  user.token = token;
+  return user.save();
+};
+
+module.exports = mongoose.model("User", UserSchema);
