@@ -11,6 +11,9 @@ export default function MainLogo() {
 }
 
 const StyledMainLogo = styled.h1`
-  margin-bottom: 3.75rem;
+  margin-bottom: 2.5rem;
   text-align: center;
+  img {
+    width: 21.875rem;
+  }
 `;

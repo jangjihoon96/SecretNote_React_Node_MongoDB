@@ -6,7 +6,7 @@ export function Form({ children }) {
   return <StyledForm>{children}</StyledForm>;
 }
 const StyledForm = styled.form`
-  max-width: 33.375rem;
+  max-width: 25.875rem;
   width: 100%;
   margin: 0 auto;
 `;
@@ -15,7 +15,7 @@ export function Inputs({ children }) {
   return <StyledInputs>{children}</StyledInputs>;
 }
 const StyledInputs = styled.div`
-  margin-bottom: 3.75rem;
+  margin-bottom: 3.125rem;
 `;
 
 export function Input({
@@ -41,15 +41,15 @@ const StyledInput = styled.input`
   border: 0;
   border-bottom: 1px solid #aaaaaa;
   width: 100%;
-  height: 5.25rem;
+  height: 3.75rem;
   padding: 0 1.875rem;
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   &::placeholder {
     color: #9a9a9a;
   }
   & + input {
-    margin-top: 1.875rem;
+    margin-top: 1.5rem;
   }
 `;
 
@@ -61,17 +61,17 @@ export function Button({ color, children }) {
 }
 const StyledButton = styled.button`
   width: 100%;
-  height: 5.25rem;
+  height: 3.75rem;
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   background-color: transparent;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: #191919;
   cursor: pointer;
   & + button {
-    margin-top: 1.875rem;
+    margin-top: 1.5rem;
   }
   &:hover {
     background-color: #f9f9f9;
@@ -79,14 +79,14 @@ const StyledButton = styled.button`
 `;
 const StyledButtonBlue = styled.button`
   width: 100%;
-  height: 5.25rem;
+  height: 3.75rem;
   box-sizing: border-box;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   background-color: #768cff;
   color: #ffffff;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   cursor: pointer;
 `;
 
@@ -96,16 +96,16 @@ export function LinkButton({ to, children }) {
 const StyledLinkButton = styled(Link)`
   display: inline-block;
   width: 100%;
-  height: 5.25rem;
-  line-height: 5.25rem;
-  margin-top: 1.875rem;
+  height: 3.75rem;
+  line-height: 3.75rem;
+  margin-top: 1.5rem;
   box-sizing: border-box;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   text-align: center;
   background-color: transparent;
   border: 0;
-  border-radius: 1rem;
+  border-radius: 0.5rem;
   color: #191919;
   cursor: pointer;
   &:hover {

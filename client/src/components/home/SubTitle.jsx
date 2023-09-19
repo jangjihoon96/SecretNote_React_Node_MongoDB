@@ -6,8 +6,8 @@ export default function SubTitle({ children }) {
 }
 
 const StyledSubTitle = styled.p`
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #333333;
   text-align: center;
-  margin-bottom: 80px;
+  margin-bottom: 3.75rem;
 `;
