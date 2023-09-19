@@ -30,7 +30,7 @@ router.post("/", async (req, res) => {
 
     await user.save(); // db에 user 저장
 
-    res.send("Success");
+    res.status(200).send("Success");
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");
