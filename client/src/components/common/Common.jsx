@@ -15,7 +15,7 @@ export function Inputs({ children }) {
   return <StyledInputs>{children}</StyledInputs>;
 }
 const StyledInputs = styled.div`
-  margin-bottom: 3.125rem;
+  margin-bottom: 1.625rem;
 `;
 
 export function Input({
@@ -27,14 +27,17 @@ export function Input({
   onChange,
 }) {
   return (
-    <StyledInput
-      type={type}
-      name={name}
-      id={id}
-      placeholder={placeholder}
-      defaultValue={value}
-      onChange={onChange}
-    />
+    <>
+      <StyledLabel htmlFor={id}>{value}</StyledLabel>
+      <StyledInput
+        type={type}
+        name={name}
+        id={id}
+        placeholder={placeholder}
+        defaultValue={value}
+        onChange={onChange}
+      />
+    </>
   );
 }
 const StyledInput = styled.input`
@@ -48,8 +51,19 @@ const StyledInput = styled.input`
   &::placeholder {
     color: #9a9a9a;
   }
+`;
+const StyledLabel = styled.label`
+  overflow: hidden;
+  position: absolute;
+  clip: rect(0 0 0 0); /* IE 6,7 */
+  clip: rect(0, 0, 0, 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
   & + input {
-    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
 `;
 
