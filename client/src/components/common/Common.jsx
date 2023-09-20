@@ -126,3 +126,29 @@ const StyledLinkButton = styled(Link)`
     background-color: #f9f9f9;
   }
 `;
+
+export function Textarea({ name, id, placeholder = "", value = "", onChange }) {
+  return (
+    <StyledTextarea
+      id={id}
+      name={name}
+      defaultValue={value}
+      onChange={onChange}
+      placeholder={placeholder}
+    ></StyledTextarea>
+  );
+}
+
+const StyledTextarea = styled.textarea`
+  border: 0;
+  border-bottom: 1px solid #aaaaaa;
+  width: 100%;
+  height: 300px;
+  padding: 1rem 1.875rem 0 1.875rem;
+  box-sizing: border-box;
+  font-size: 1.25rem;
+  resize: none;
+  &::placeholder {
+    color: #9a9a9a;
+  }
+`;

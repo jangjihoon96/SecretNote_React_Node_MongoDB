@@ -5,7 +5,7 @@ import List from "../components/board/List";
 import ListItem from "../components/board/ListItem";
 import ItemTitle from "../components/board/ItemTitle";
 import ItemDate from "../components/board/ItemDate";
-import WriteButton from "../components/board/WriteButton";
+import WriteLink from "../components/board/WriteLink";
 import EditButton from "../components/board/EditButton";
 import DeleteButton from "../components/board/DeleteButton";
 import ItemLink from "../components/board/ItemLink";
@@ -24,7 +24,7 @@ export default function Board() {
           <DeleteButton>삭제</DeleteButton>
         </ListItem>
       </List>
-      <WriteButton>글쓰기</WriteButton>
+      <WriteLink>글쓰기</WriteLink>
     </BoardContainer>
   );
 }
