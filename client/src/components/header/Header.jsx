@@ -22,10 +22,11 @@ const StyledHeader = styled.header`
   top: 0;
   left: 0;
   width: 100%;
+  height: 70px;
   box-sizing: border-box;
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 30px;
+  padding: 0 30px;
 `;
