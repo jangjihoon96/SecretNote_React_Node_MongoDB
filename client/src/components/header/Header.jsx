@@ -1,0 +1,31 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import HeaderLogo from "../../assets/img/logo.png";
+import LogoutButton from "./LogoutButton";
+import styled from "styled-components";
+
+export default function Header({ onLogOut }) {
+  return (
+    <StyledHeader>
+      <h1>
+        <Link to="/board">
+          <img src={HeaderLogo} alt="Secret Note" />
+        </Link>
+      </h1>
+      <LogoutButton onLogOut={onLogOut}>로그아웃</LogoutButton>
+    </StyledHeader>
+  );
+}
+
+const StyledHeader = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+`;

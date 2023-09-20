@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import HomeContainer from "../container/HomeContainer";
 import MainLogo from "../components/home/MainLogo";
 import SubTitle from "../components/home/SubTitle";
@@ -11,49 +11,25 @@ import {
 } from "../components/common/Common";
 import { useNavigate } from "react-router-dom";
 
-export default function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export default function Home({
+  email,
+  password,
+  setEmail,
+  setPassword,
+  onLogIn,
+}) {
   const navigate = useNavigate();
-
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   };
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
-
-  const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await fetch("http://localhost:3001/api/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      });
-      const data = await response.json();
-      if (data.loginSuccess === true) {
-        alert("로그인에 성공하였습니다.");
-        localStorage.setItem("user_token", data.userToken);
-        navigate("/board");
-      } else {
-        alert("로그인 정보를 다시 확인해주세요.");
-      }
-    } catch (error) {
-      console.error(error);
-      alert("올바른 정보를 입력해주세요.");
-    }
+  const handleLogin = () => {
+    onLogIn();
+    navigate("/board");
+    setPassword("");
   };
-  useEffect(() => {
-    if (localStorage.getItem("user_token")) {
-      return navigate("/board");
-    }
-  }, []);
   return (
     <HomeContainer>
       <MainLogo />
