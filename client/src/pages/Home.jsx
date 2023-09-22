@@ -9,7 +9,6 @@ import {
   Inputs,
   LinkButton,
 } from "../components/common/Common";
-import { useNavigate } from "react-router-dom";
 
 export default function Home({
   email,
@@ -18,16 +17,15 @@ export default function Home({
   setPassword,
   onLogIn,
 }) {
-  const navigate = useNavigate();
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   };
   const onChangePassword = (e) => {
     setPassword(e.target.value);
   };
-  const handleLogin = () => {
-    onLogIn();
-    navigate("/board");
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    onLogIn(); // 로그인 시도
     setPassword("");
   };
   return (

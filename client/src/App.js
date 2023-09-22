@@ -1,6 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Reset } from "styled-reset";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import {
+  Navigate,
+  Route,
+  BrowserRouter as Router,
+  Routes,
+} from "react-router-dom";
 import Home from "./pages/Home";
 import Board from "./pages/Board";
 import Signup from "./pages/Signup";
@@ -80,8 +85,9 @@ function App() {
               }
             ></Route>
           ) : (
-            <Route exact path="/board" element={<Board />}></Route>
+            <Route path="/" element={<Navigate to="/board" />} />
           )}
+          <Route exact path="/board" element={<Board />}></Route>
           <Route path="/board/:id" element={<Detail />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/write" element={<Write />}></Route>
