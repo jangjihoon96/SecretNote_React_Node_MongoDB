@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import BoardContainer from "../container/BoardContainer";
 import MainTitle from "../components/common/MainTitle";
 import List from "../components/board/List";
@@ -11,9 +11,30 @@ import DeleteButton from "../components/board/DeleteButton";
 import ItemLink from "../components/board/ItemLink";
 
 export default function Board() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    const user_token = localStorage.getItem("user_token");
+    console.log(user_token);
+    fetch(`http://localhost:3001/api/posts/read?token=${user_token}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${user_token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        // console.log(res);
+        setPosts(res);
+      });
+  }, []);
+
   return (
     <BoardContainer>
       <MainTitle>나만의 비밀 노트</MainTitle>
+      {posts.map((a) => {
+        return <div>{a._id}</div>;
+      })}
       <List>
         <ListItem>
           <ItemLink to="/board">

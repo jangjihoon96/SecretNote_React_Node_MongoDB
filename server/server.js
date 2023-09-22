@@ -20,5 +20,6 @@ app.use(express.json({ extended: false }));
 app.use("/api/register", require("./routes/api/register"));
 app.use("/api/login", require("./routes/api/login"));
 app.use("/api/posts/create", require("./routes/api/post"));
+app.use("/api/posts/read", require("./routes/api/my-posts"));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
