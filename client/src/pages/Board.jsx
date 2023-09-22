@@ -15,7 +15,6 @@ export default function Board() {
 
   useEffect(() => {
     const user_token = localStorage.getItem("user_token");
-    console.log(user_token);
     fetch(`http://localhost:3001/api/posts/read?token=${user_token}`, {
       method: "GET",
       headers: {
@@ -32,18 +31,21 @@ export default function Board() {
   return (
     <BoardContainer>
       <MainTitle>나만의 비밀 노트</MainTitle>
-      {posts.map((a) => {
-        return <div>{a._id}</div>;
-      })}
       <List>
-        <ListItem>
-          <ItemLink to="/board">
-            <ItemTitle>안녕하세요</ItemTitle>
-            <ItemDate>23.03.03</ItemDate>
-          </ItemLink>
-          <EditButton>수정</EditButton>
-          <DeleteButton>삭제</DeleteButton>
-        </ListItem>
+        {posts
+          .map((post, idx) => {
+            return (
+              <ListItem key={idx}>
+                <ItemLink to={`/board/${post._id}`}>
+                  <ItemTitle>{post.title}</ItemTitle>
+                  <ItemDate>{post.date}</ItemDate>
+                </ItemLink>
+                <EditButton>수정</EditButton>
+                <DeleteButton>삭제</DeleteButton>
+              </ListItem>
+            );
+          })
+          .reverse()}
       </List>
       <WriteLink>글쓰기</WriteLink>
     </BoardContainer>
