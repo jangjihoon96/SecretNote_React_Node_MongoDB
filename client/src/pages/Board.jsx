@@ -5,7 +5,7 @@ import List from "../components/board/List";
 import ListItem from "../components/board/ListItem";
 import ItemTitle from "../components/board/ItemTitle";
 import ItemDate from "../components/board/ItemDate";
-import WriteLink from "../components/board/WriteLink";
+import BlueLink from "../components/board/BlueLink";
 import EditButton from "../components/board/EditButton";
 import DeleteButton from "../components/board/DeleteButton";
 import ItemLink from "../components/board/ItemLink";
@@ -47,7 +47,7 @@ export default function Board() {
           })
           .reverse()}
       </List>
-      <WriteLink>글쓰기</WriteLink>
+      <BlueLink to="/write">글쓰기</BlueLink>
     </BoardContainer>
   );
 }

@@ -2,11 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-export default function WriteLink({ to = "/write", children }) {
-  return <StyledWriteLink to={to}>{children}</StyledWriteLink>;
+export default function BlueLink({ to, children }) {
+  return <StyledBlueLink to={to}>{children}</StyledBlueLink>;
 }
 
-const StyledWriteLink = styled(Link)`
+const StyledBlueLink = styled(Link)`
   display: inline-block;
   width: 18.75rem;
   height: 3.75rem;
