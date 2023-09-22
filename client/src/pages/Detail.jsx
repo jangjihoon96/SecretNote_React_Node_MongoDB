@@ -1,5 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import DetailContainer from "../container/DetailContainer";
+import DetailTitle from "../components/detail/DetailTitle";
+import DetailDate from "../components/detail/DetailDate";
+import DetailContent from "../components/detail/DetailContent";
+import BlueLink from "../components/board/BlueLink";
 
 export default function Detail() {
   const { id } = useParams();
@@ -15,10 +20,11 @@ export default function Detail() {
       });
   }, [id]);
   return (
-    <div>
-      <h2>{postDetail.title}</h2>
-      <p>{postDetail.content}</p>
-      <p>{postDetail.date}</p>
-    </div>
+    <DetailContainer>
+      <DetailTitle>{postDetail.title}</DetailTitle>
+      <DetailDate>{postDetail.date}</DetailDate>
+      <DetailContent>{postDetail.content}</DetailContent>
+      <BlueLink to="/board">목록</BlueLink>
+    </DetailContainer>
   );
 }
