@@ -13,7 +13,7 @@ const PostSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  token: {
+  user_id: {
     type: String,
     required: true,
   },
