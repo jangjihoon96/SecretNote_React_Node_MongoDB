@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 export default function Write() {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [date, setDate] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("user_token");
 
@@ -23,8 +22,15 @@ export default function Write() {
   const onChangeContent = (e) => {
     setContent(e.target.value);
   };
-  const onChangeDate = (e) => {
-    setDate(e.target.value);
+
+  // 작성 날짜 함수
+  const currentTime = () => {
+    let today = new Date();
+    let year = today.getFullYear().toString().slice(2, 4);
+    let month = ("0" + (today.getMonth() + 1)).slice(-2);
+    let day = ("0" + today.getDate()).slice(-2);
+    let result = year + "." + month + "." + day;
+    return result;
   };
 
   const handleWrite = async (e) => {
@@ -38,7 +44,7 @@ export default function Write() {
         body: JSON.stringify({
           title,
           content,
-          date,
+          date: currentTime(),
           token,
         }),
       });
@@ -46,7 +52,6 @@ export default function Write() {
         // 게시물 작성 성공
         setTitle("");
         setContent("");
-        setDate("");
         alert("게시물 작성 성공");
         navigate("/board");
       } else {
@@ -79,14 +84,6 @@ export default function Write() {
             name="content"
             onChange={onChangeContent}
           ></Textarea>
-          <Input
-            type="text"
-            placeholder="날짜를 입력해주세요."
-            value={date}
-            id="date"
-            name="date"
-            onChange={onChangeDate}
-          />
         </Inputs>
         <Button color="blue" type="submit">
           작성하기
