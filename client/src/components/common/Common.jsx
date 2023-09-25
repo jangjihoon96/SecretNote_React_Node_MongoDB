@@ -102,6 +102,9 @@ const StyledButtonBlue = styled.button`
   border: 0;
   border-radius: 0.5rem;
   cursor: pointer;
+  &:hover {
+    background-color: #506dff;
+  }
 `;
 
 export function LinkButton({ to, children }) {

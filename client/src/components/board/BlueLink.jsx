@@ -23,4 +23,7 @@ const StyledBlueLink = styled(Link)`
   background-color: #768cff;
   border: 0;
   cursor: pointer;
+  &:hover {
+    background-color: #506dff;
+  }
 `;
