@@ -11,4 +11,5 @@ const StyledDetailContent = styled.p`
   font-size: 1.25rem;
   color: #191919;
   line-height: 1.5;
+  white-space: pre-line;
 `;
