@@ -13,6 +13,7 @@ import ItemLink from "../components/board/ItemLink";
 export default function Board() {
   const [posts, setPosts] = useState([]);
 
+  // DB 데이터 불러오기
   useEffect(() => {
     const user_token = localStorage.getItem("user_token");
     fetch(`http://localhost:3001/api/posts/read?token=${user_token}`, {
@@ -28,6 +29,31 @@ export default function Board() {
       });
   }, []);
 
+  // 게시물 삭제 기능
+  const handleDelete = (id) => {
+    let result = window.confirm("게시물을 정말로 삭제 하시겠습니까?");
+    if (result) {
+      fetch(`http://localhost:3001/api/posts/delete?id=${id}`, {
+        method: "DELETE",
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          if (res.success) {
+            alert(res.message);
+            setPosts((prevData) => {
+              return prevData.filter((post) => {
+                return post._id !== id;
+              });
+            });
+          } else {
+            alert(res.message);
+          }
+        });
+    } else {
+      return;
+    }
+  };
+
   return (
     <BoardContainer>
       <MainTitle>나만의 비밀 노트</MainTitle>
@@ -41,7 +67,9 @@ export default function Board() {
                   <ItemDate>{post.date}</ItemDate>
                 </ItemLink>
                 <EditButton>수정</EditButton>
-                <DeleteButton>삭제</DeleteButton>
+                <DeleteButton handleDelete={handleDelete} post={post}>
+                  삭제
+                </DeleteButton>
               </ListItem>
             );
           })

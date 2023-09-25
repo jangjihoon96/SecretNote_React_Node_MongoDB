@@ -1,8 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function DeleteButton({ children }) {
-  return <StyledDeleteButton>{children}</StyledDeleteButton>;
+export default function DeleteButton({ handleDelete, post, children }) {
+  return (
+    <StyledDeleteButton onClick={() => handleDelete(post._id)}>
+      {children}
+    </StyledDeleteButton>
+  );
 }
 
 const StyledDeleteButton = styled.button`
