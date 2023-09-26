@@ -9,6 +9,7 @@ import BlueLink from "../components/board/BlueLink";
 import EditButton from "../components/board/EditButton";
 import DeleteButton from "../components/board/DeleteButton";
 import ItemLink from "../components/board/ItemLink";
+import EmptyItem from "../components/board/EmptyItem";
 
 export default function Board() {
   const [posts, setPosts] = useState([]);
@@ -24,7 +25,6 @@ export default function Board() {
     })
       .then((res) => res.json())
       .then((res) => {
-        // console.log(res);
         setPosts(res);
       });
   }, []);
@@ -57,22 +57,27 @@ export default function Board() {
   return (
     <BoardContainer>
       <MainTitle>나만의 비밀 노트</MainTitle>
-      <List>
-        {posts
-          .map((post, idx) => {
-            return (
-              <ListItem key={idx}>
-                <ItemLink to={`/board/${post._id}`}>
-                  <ItemTitle>{post.title}</ItemTitle>
-                  <ItemDate>{post.date}</ItemDate>
-                </ItemLink>
-                <EditButton to={`/board/edit/${post._id}`} />
-                <DeleteButton handleDelete={handleDelete} post={post} />
-              </ListItem>
-            );
-          })
-          .reverse()}
-      </List>
+      {posts.length === 0 ? (
+        <EmptyItem>작성된 게시물이 없습니다.</EmptyItem>
+      ) : (
+        <List>
+          {posts
+            .map((post, idx) => {
+              return (
+                <ListItem key={idx}>
+                  <ItemLink to={`/board/${post._id}`}>
+                    <ItemTitle>{post.title}</ItemTitle>
+                    <ItemDate>{post.date}</ItemDate>
+                  </ItemLink>
+                  <EditButton to={`/board/edit/${post._id}`} />
+                  <DeleteButton handleDelete={handleDelete} post={post} />
+                </ListItem>
+              );
+            })
+            .reverse()}
+        </List>
+      )}
+
       <BlueLink to="/write">글쓰기</BlueLink>
     </BoardContainer>
   );
