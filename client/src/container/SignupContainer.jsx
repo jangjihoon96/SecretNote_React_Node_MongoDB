@@ -14,4 +14,7 @@ const StyledSignupContainer = styled.div`
   height: 100vh;
   padding: 0 3.125rem;
   box-sizing: border-box;
+  @media screen and (max-width: 768px) {
+    padding: 0 1.25rem;
+  }
 `;

@@ -7,7 +7,10 @@ export default function MainTitle({ children }) {
 
 const StyledMainTitle = styled.h2`
   margin-bottom: 2.5rem;
-  font-size: 40px;
+  font-size: 2.5rem;
   text-align: center;
   color: #191919;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;

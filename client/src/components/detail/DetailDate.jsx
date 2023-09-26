@@ -11,4 +11,7 @@ const StyledDetailDate = styled.span`
   text-align: right;
   font-size: 1rem;
   color: #999999;
+  @media screen and (max-width: 768px) {
+    font-size: 0.75rem;
+  }
 `;

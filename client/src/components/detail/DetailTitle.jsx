@@ -13,4 +13,7 @@ const StyledDetailTitle = styled.h2`
   padding-bottom: 1rem;
   font-size: 2.5rem;
   color: #191919;
+  @media screen and (max-width: 768px) {
+    font-size: 2rem;
+  }
 `;

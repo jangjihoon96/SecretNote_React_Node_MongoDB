@@ -12,4 +12,7 @@ const StyledDetailContent = styled.p`
   color: #191919;
   line-height: 1.5;
   white-space: pre-line;
+  @media screen and (max-width: 768px) {
+    font-size: 1rem;
+  }
 `;

@@ -16,4 +16,9 @@ const StyledMainLogo = styled.h1`
   img {
     width: 21.875rem;
   }
+  @media screen and (max-width: 768px) {
+    img {
+      width: 17.5rem;
+    }
+  }
 `;
