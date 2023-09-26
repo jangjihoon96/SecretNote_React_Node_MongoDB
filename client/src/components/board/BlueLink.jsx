@@ -16,6 +16,7 @@ const StyledBlueLink = styled(Link)`
   bottom: 100px;
   transform: translate(-50%, 0);
   text-decoration: none;
+  font-weight: 500;
   font-size: 1.25rem;
   text-align: center;
   color: #ffffff;

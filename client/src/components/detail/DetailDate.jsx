@@ -9,6 +9,7 @@ const StyledDetailDate = styled.span`
   margin: 1rem 0;
   display: block;
   text-align: right;
+  font-weight: 300;
   font-size: 1rem;
   color: #999999;
   @media screen and (max-width: 768px) {

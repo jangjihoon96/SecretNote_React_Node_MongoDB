@@ -18,6 +18,7 @@ const StyledLogoutButton = styled.button`
   background-color: #4f4f4f;
   border-radius: 4px;
   border: 0;
+  font-weight: 500;
   font-size: 16px;
   color: #ffffff;
   cursor: pointer;

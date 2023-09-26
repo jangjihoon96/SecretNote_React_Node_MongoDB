@@ -77,6 +77,7 @@ const StyledButton = styled.button`
   width: 100%;
   height: 3.75rem;
   box-sizing: border-box;
+  font-weight: 500;
   font-size: 1.25rem;
   text-align: center;
   background-color: transparent;
@@ -95,6 +96,7 @@ const StyledButtonBlue = styled.button`
   width: 100%;
   height: 3.75rem;
   box-sizing: border-box;
+  font-weight: 500;
   font-size: 1.25rem;
   text-align: center;
   background-color: #768cff;
@@ -118,6 +120,7 @@ const StyledLinkButton = styled(Link)`
   margin-top: 1.5rem;
   box-sizing: border-box;
   text-decoration: none;
+  font-weight: 500;
   font-size: 1.25rem;
   text-align: center;
   background-color: transparent;

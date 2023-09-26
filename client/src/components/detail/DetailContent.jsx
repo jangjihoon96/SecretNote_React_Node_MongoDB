@@ -9,7 +9,7 @@ const StyledDetailContent = styled.p`
   box-sizing: border-box;
   padding-bottom: 12.5rem;
   font-size: 1.25rem;
-  color: #191919;
+  color: #333333;
   line-height: 1.5;
   white-space: pre-line;
   @media screen and (max-width: 768px) {
