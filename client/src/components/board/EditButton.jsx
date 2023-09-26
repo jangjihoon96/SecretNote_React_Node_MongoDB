@@ -15,6 +15,7 @@ export default function EditButton({ to }) {
 
 const StyledEditButton = styled(Link)`
   display: inline-block;
+  height: 1.5rem;
   flex-shrink: 0;
   font-size: 0.75rem;
   color: #ffffff;

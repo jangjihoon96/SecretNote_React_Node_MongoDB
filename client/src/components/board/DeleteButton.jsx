@@ -14,6 +14,7 @@ export default function DeleteButton({ handleDelete, post }) {
 
 const StyledDeleteButton = styled.button`
   flex-shrink: 0;
+  height: 1.5rem;
   margin-left: 4px;
   padding: 0;
   background-color: transparent;
