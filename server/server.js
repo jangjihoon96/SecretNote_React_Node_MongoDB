@@ -23,5 +23,6 @@ app.use("/api/posts/create", require("./routes/api/post"));
 app.use("/api/posts/read", require("./routes/api/my-posts"));
 app.use("/api/posts/read/detail", require("./routes/api/my-detail-post"));
 app.use("/api/posts/delete", require("./routes/api/delete-post"));
+app.use("/api/posts/edit", require("./routes/api/edit"));
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
