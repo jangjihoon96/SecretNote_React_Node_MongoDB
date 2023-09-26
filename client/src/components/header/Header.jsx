@@ -29,7 +29,7 @@ const StyledHeader = styled.header`
   flex-flow: row nowrap;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  padding: 0 3.125rem;
   @media screen and (max-width: 768px) {
     padding: 0 1.25rem;
   }

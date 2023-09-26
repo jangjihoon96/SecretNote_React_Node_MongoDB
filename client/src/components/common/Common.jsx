@@ -6,7 +6,6 @@ export function Form({ onSubmit, children }) {
   return <StyledForm onSubmit={onSubmit}>{children}</StyledForm>;
 }
 const StyledForm = styled.form`
-  max-width: 25.875rem;
   width: 100%;
   margin: 0 auto;
 `;
@@ -149,13 +148,16 @@ const StyledTextarea = styled.textarea`
   border: 0;
   border-bottom: 1px solid #aaaaaa;
   width: 100%;
-  height: 300px;
+  height: 500px;
   padding: 1rem 1.875rem 0 1.875rem;
   box-sizing: border-box;
   font-size: 1.25rem;
   resize: none;
   &::placeholder {
     color: #9a9a9a;
+  }
+  @media screen and (max-width: 1440px) {
+    height: 300px;
   }
 `;
 

@@ -11,6 +11,8 @@ const StyledHomeContainer = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  max-width: 25.875rem;
+  margin: 0 auto;
   height: 100vh;
   padding: 0 3.125rem;
   box-sizing: border-box;
