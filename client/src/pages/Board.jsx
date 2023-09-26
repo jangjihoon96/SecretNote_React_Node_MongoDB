@@ -66,10 +66,8 @@ export default function Board() {
                   <ItemTitle>{post.title}</ItemTitle>
                   <ItemDate>{post.date}</ItemDate>
                 </ItemLink>
-                <EditButton to={`/board/edit/${post._id}`}>수정</EditButton>
-                <DeleteButton handleDelete={handleDelete} post={post}>
-                  삭제
-                </DeleteButton>
+                <EditButton to={`/board/edit/${post._id}`} />
+                <DeleteButton handleDelete={handleDelete} post={post} />
               </ListItem>
             );
           })

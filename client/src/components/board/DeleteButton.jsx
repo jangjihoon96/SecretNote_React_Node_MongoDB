@@ -1,10 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import { ReactComponent as DeleteSvg } from "../../assets/icon/icon-delete.svg";
 
-export default function DeleteButton({ handleDelete, post, children }) {
+export default function DeleteButton({ handleDelete, post }) {
   return (
     <StyledDeleteButton onClick={() => handleDelete(post._id)}>
-      {children}
+      <DeleteSvg fill="#999999" />
     </StyledDeleteButton>
   );
 }
@@ -12,12 +13,13 @@ export default function DeleteButton({ handleDelete, post, children }) {
 const StyledDeleteButton = styled.button`
   flex-shrink: 0;
   margin-left: 4px;
-  padding: 4px 6px;
+  padding: 0;
+  background-color: transparent;
   font-size: 0.75rem;
   color: #ffffff;
-  background-color: #ff0000;
   border: 0;
-  &:hover {
-    background-color: #c50000;
+  cursor: pointer;
+  &:hover svg {
+    fill: #333333;
   }
 `;
