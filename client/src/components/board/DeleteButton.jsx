@@ -1,10 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 import { ReactComponent as DeleteSvg } from "../../assets/icon/icon-delete.svg";
+import { A11yHiddenSpan } from "../common/Common";
 
 export default function DeleteButton({ handleDelete, post }) {
   return (
     <StyledDeleteButton onClick={() => handleDelete(post._id)}>
+      <A11yHiddenSpan>삭제</A11yHiddenSpan>
       <DeleteSvg fill="#999999" />
     </StyledDeleteButton>
   );

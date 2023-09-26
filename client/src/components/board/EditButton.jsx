@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { ReactComponent as EditSvg } from "../../assets/icon/icon-edit.svg";
+import { A11yHiddenSpan } from "../common/Common";
 
 export default function EditButton({ to }) {
   return (
     <StyledEditButton to={to}>
+      <A11yHiddenSpan>수정</A11yHiddenSpan>
       <EditSvg fill="#999999" />
     </StyledEditButton>
   );
