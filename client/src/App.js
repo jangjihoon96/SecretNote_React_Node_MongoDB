@@ -12,6 +12,7 @@ import Signup from "./pages/Signup";
 import Write from "./pages/Write";
 import Header from "./components/header/Header";
 import Detail from "./pages/Detail";
+import Edit from "./pages/Edit";
 function App() {
   // 상태 변수를 사용하여 토큰 상태 관리
   const [userToken, setUserToken] = useState(
@@ -89,6 +90,7 @@ function App() {
           )}
           <Route exact path="/board" element={<Board />}></Route>
           <Route path="/board/:id" element={<Detail />}></Route>
+          <Route path="/board/edit/:id" element={<Edit />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/write" element={<Write />}></Route>
         </Routes>
