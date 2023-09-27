@@ -9,14 +9,15 @@ import {
   Inputs,
   LinkButton,
 } from "../components/common/Common";
+import { useRecoilState } from "recoil";
+import {
+  UserLoginEmailAtom,
+  UserLoginPasswordAtom,
+} from "../recoil/UserLoginAtom";
 
-export default function Home({
-  email,
-  password,
-  setEmail,
-  setPassword,
-  onLogIn,
-}) {
+export default function Home({ onLogIn }) {
+  const [email, setEmail] = useRecoilState(UserLoginEmailAtom);
+  const [password, setPassword] = useRecoilState(UserLoginPasswordAtom);
   const onChangeEmail = (e) => {
     setEmail(e.target.value);
   };

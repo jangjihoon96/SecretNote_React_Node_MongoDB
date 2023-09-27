@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Reset } from "styled-reset";
 import {
   Navigate,
@@ -13,15 +13,19 @@ import Write from "./pages/Write";
 import Header from "./components/header/Header";
 import Detail from "./pages/Detail";
 import Edit from "./pages/Edit";
+import { useRecoilState, useRecoilValue } from "recoil";
+import {
+  UserLoginEmailAtom,
+  UserLoginPasswordAtom,
+} from "./recoil/UserLoginAtom";
+import { UserTokenAtom } from "./recoil/UserTokenAtom";
 function App() {
   // 상태 변수를 사용하여 토큰 상태 관리
-  const [userToken, setUserToken] = useState(
-    localStorage.getItem("user_token")
-  );
+  const [userToken, setUserToken] = useRecoilState(UserTokenAtom);
 
   // 로그인 이메일, 패스워드
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const email = useRecoilValue(UserLoginEmailAtom);
+  const password = useRecoilValue(UserLoginPasswordAtom);
 
   // 로그인 함수
   const handleLogin = async () => {
@@ -73,18 +77,7 @@ function App() {
         {userToken ? <Header onLogOut={handleLogout} /> : null}
         <Routes>
           {!userToken ? (
-            <Route
-              path="/"
-              element={
-                <Home
-                  email={email}
-                  password={password}
-                  setEmail={setEmail}
-                  setPassword={setPassword}
-                  onLogIn={handleLogin}
-                />
-              }
-            ></Route>
+            <Route path="/" element={<Home onLogIn={handleLogin} />}></Route>
           ) : (
             <Route path="/" element={<Navigate to="/board" />} />
           )}
