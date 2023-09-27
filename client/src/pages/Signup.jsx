@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import SignupContainer from "../container/SignupContainer";
 import MainTitle from "../components/common/MainTitle";
@@ -9,11 +9,17 @@ import {
   Inputs,
   LinkButton,
 } from "../components/common/Common";
+import { useRecoilState } from "recoil";
+import {
+  RegisterEmailAtom,
+  RegisterNameAtom,
+  RegisterPasswordAtom,
+} from "../recoil/RegisterAtom";
 
 export default function Signup() {
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userPw, setUserPw] = useState("");
+  const [userName, setUserName] = useRecoilState(RegisterNameAtom);
+  const [userEmail, setUserEmail] = useRecoilState(RegisterEmailAtom);
+  const [userPw, setUserPw] = useRecoilState(RegisterPasswordAtom);
   const navigate = useNavigate();
   const handleSignup = async (e) => {
     e.preventDefault();
