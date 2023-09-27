@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import BoardContainer from "../container/BoardContainer";
 import MainTitle from "../components/common/MainTitle";
 import List from "../components/board/List";
@@ -10,9 +10,11 @@ import EditButton from "../components/board/EditButton";
 import DeleteButton from "../components/board/DeleteButton";
 import ItemLink from "../components/board/ItemLink";
 import EmptyItem from "../components/board/EmptyItem";
+import { useRecoilState } from "recoil";
+import { PostsArrayAtom } from "../recoil/PostsArrayAtom";
 
 export default function Board() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useRecoilState(PostsArrayAtom);
 
   // DB 데이터 불러오기
   useEffect(() => {
@@ -27,7 +29,7 @@ export default function Board() {
       .then((res) => {
         setPosts(res);
       });
-  }, []);
+  }, [setPosts]);
 
   // 게시물 삭제 기능
   const handleDelete = (id) => {
