@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import WriteContainer from "../container/WriteContainer";
 import MainTitle from "../components/common/MainTitle";
 import {
@@ -9,10 +9,15 @@ import {
   Textarea,
 } from "../components/common/Common";
 import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import {
+  PostWriteContentAtom,
+  PostWriteTitleAtom,
+} from "../recoil/PostWriteAtom";
 
 export default function Write() {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useRecoilState(PostWriteTitleAtom);
+  const [content, setContent] = useRecoilState(PostWriteContentAtom);
   const navigate = useNavigate();
   const token = localStorage.getItem("user_token");
 

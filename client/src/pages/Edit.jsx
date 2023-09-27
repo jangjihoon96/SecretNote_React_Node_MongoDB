@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import WriteContainer from "../container/WriteContainer";
 import MainTitle from "../components/common/MainTitle";
 import {
@@ -9,11 +9,13 @@ import {
   Textarea,
 } from "../components/common/Common";
 import { useNavigate, useParams } from "react-router-dom";
+import { useRecoilState } from "recoil";
+import { PostEditContentAtom, PostEditTitleAtom } from "../recoil/PostEditAtom";
 
 export default function Edit() {
   const { id } = useParams();
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  const [title, setTitle] = useRecoilState(PostEditTitleAtom);
+  const [content, setContent] = useRecoilState(PostEditContentAtom);
   const navigate = useNavigate();
 
   const onChangeTitle = (e) => {
@@ -63,7 +65,7 @@ export default function Edit() {
         setTitle(res.title);
         setContent(res.content);
       });
-  }, [id]);
+  }, [id, setContent, setTitle]);
 
   return (
     <WriteContainer>
