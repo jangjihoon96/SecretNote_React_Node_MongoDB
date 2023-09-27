@@ -20,6 +20,9 @@ export default function Detail() {
         // console.log(res);
         setPostDetail(res);
       });
+    return () => {
+      setPostDetail(null);
+    };
   }, [id, setPostDetail]);
   return (
     <DetailContainer>
