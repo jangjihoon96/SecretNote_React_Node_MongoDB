@@ -16,6 +16,7 @@ import {
 } from "../recoil/PostWriteAtom";
 
 export default function Write() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [title, setTitle] = useRecoilState(PostWriteTitleAtom);
   const [content, setContent] = useRecoilState(PostWriteContentAtom);
   const navigate = useNavigate();
@@ -41,7 +42,7 @@ export default function Write() {
   const handleWrite = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/posts/create", {
+      const response = await fetch(`${API_URL}/posts/create`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

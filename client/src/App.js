@@ -20,6 +20,7 @@ import {
 } from "./recoil/UserLoginAtom";
 import { UserTokenAtom } from "./recoil/UserTokenAtom";
 function App() {
+  const API_URL = process.env.REACT_APP_API_URL;
   // 상태 변수를 사용하여 토큰 상태 관리
   const [userToken, setUserToken] = useRecoilState(UserTokenAtom);
 
@@ -30,7 +31,7 @@ function App() {
   // 로그인 함수
   const handleLogin = async () => {
     try {
-      const response = await fetch("http://localhost:3001/api/login", {
+      const response = await fetch(`${API_URL}/login`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

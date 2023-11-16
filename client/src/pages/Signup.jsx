@@ -17,6 +17,7 @@ import {
 } from "../recoil/RegisterAtom";
 
 export default function Signup() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const [userName, setUserName] = useRecoilState(RegisterNameAtom);
   const [userEmail, setUserEmail] = useRecoilState(RegisterEmailAtom);
   const [userPw, setUserPw] = useRecoilState(RegisterPasswordAtom);
@@ -24,7 +25,7 @@ export default function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/register", {
+      const response = await fetch(`${API_URL}/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

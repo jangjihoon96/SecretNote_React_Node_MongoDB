@@ -13,6 +13,7 @@ import { useRecoilState } from "recoil";
 import { PostEditContentAtom, PostEditTitleAtom } from "../recoil/PostEditAtom";
 
 export default function Edit() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
   const [title, setTitle] = useRecoilState(PostEditTitleAtom);
   const [content, setContent] = useRecoilState(PostEditContentAtom);
@@ -29,7 +30,7 @@ export default function Edit() {
   const handleEdit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3001/api/posts/edit", {
+      const response = await fetch(`${API_URL}/posts/edit`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -57,7 +58,7 @@ export default function Edit() {
 
   // 게시물 내용 불러오기
   useEffect(() => {
-    fetch(`http://localhost:3001/api/posts/read/detail?id=${id}`, {
+    fetch(`${API_URL}/posts/read/detail?id=${id}`, {
       method: "GET",
     })
       .then((res) => res.json())

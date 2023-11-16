@@ -9,10 +9,11 @@ import { PostDetailAtom } from "../recoil/PostDetailAtom";
 import { useRecoilState } from "recoil";
 
 export default function Detail() {
+  const API_URL = process.env.REACT_APP_API_URL;
   const { id } = useParams();
   const [postDetail, setPostDetail] = useRecoilState(PostDetailAtom);
   useEffect(() => {
-    fetch(`http://localhost:3001/api/posts/read/detail?id=${id}`, {
+    fetch(`${API_URL}/posts/read/detail?id=${id}`, {
       method: "GET",
     })
       .then((res) => res.json())
